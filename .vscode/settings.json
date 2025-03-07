@@ -1,0 +1,6 @@
+{
+  "deno.enablePaths": ["./"],
+  "editor.inlayHints.enabled": "off",
+  "workbench.colorTheme": "Solarized Dark",
+  "workbench.preferredDarkColorTheme": "Visual Studio Dark"
+}
