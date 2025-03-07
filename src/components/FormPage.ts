@@ -2,20 +2,25 @@ import { html } from "hono/html";
 
 const PostForm = () => html`
   <div class="form">
-    <form action="http://localhost:8000/post" method="POST">
+    <form action="/post" method="POST">
       <div class="greeting">
         <label for="title">Title</label>
-        <input name="title" id="note-title" value="Hi" />
+        <input name="title" id="note-title" value="Title Here" />
       </div>
 
       <div class="recipient">
         <label for="tag">Tag</label>
-        <input name="tag" id="note-tag" value="Mom" />
+        <input name="tag" id="note-tag" value="Tag Here" />
       </div>
 
       <div class="text">
         <label for="note">Note</label>
-        <textarea name="note" id="note-note" cols="30" rows="10"></textarea>
+        <textarea
+          name="note"
+          id="note-note"
+          cols="30"
+          rows="10"
+          placeholder="Note in here"></textarea>
       </div>
       <input type="submit" value="Record Note" />
     </form>
