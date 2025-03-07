@@ -37,8 +37,8 @@ app.post("/post", async (c) => {
   };
 
   await dBase.set(["NOTES"], resp);
-  //   return c.html(DisplayPage());
-  return c.redirect("Thank you");
+  return c.html(DisplayPage());
+  //   return c.redirect("Thank you");
 });
 
 Deno.serve(app.fetch);
