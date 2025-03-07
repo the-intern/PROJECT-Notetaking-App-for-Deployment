@@ -11,21 +11,13 @@ import { GetNotesPage } from "./components/GetNotes.ts";
 
 const app = new Hono();
 
-// kv testing
-// const key1: string = "KEY1";
-const key2: string = "KEY2";
-
 // * home page
 app.get("/", (c) => {
   return c.html(HomePage());
 });
 
 // * get posts
-app.get("/post", async (c) => {
-  const dBase = await Deno.openKv();
-
-  const stored = await dBase.getMany([[key2]]);
-  console.log(stored);
+app.get("/post", (c) => {
   return c.html(GetNotesPage());
 });
 
@@ -44,8 +36,9 @@ app.post("/post", async (c) => {
     note,
   };
 
-  await dBase.set([key2], resp);
-  return c.html(DisplayPage());
+  await dBase.set(["NOTES"], resp);
+  //   return c.html(DisplayPage());
+  return c.redirect("Thank you");
 });
 
 Deno.serve(app.fetch);
