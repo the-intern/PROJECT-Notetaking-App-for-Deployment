@@ -8,7 +8,6 @@ import { GetNotesPage } from "./components/GetNotes.ts";
 // const dBase = await Deno.openKv(
 //   "https://api.deno.com/databases/krt-the-intern-trk/connect"
 // );
-const dBase = await Deno.openKv();
 
 const app = new Hono();
 
@@ -23,6 +22,8 @@ app.get("/", (c) => {
 
 // * get posts
 app.get("/post", async (c) => {
+  const dBase = await Deno.openKv();
+
   const stored = await dBase.getMany([[key2]]);
   console.log(stored);
   return c.html(GetNotesPage());
@@ -30,6 +31,8 @@ app.get("/post", async (c) => {
 
 // * post page from home
 app.post("/post", async (c) => {
+  const dBase = await Deno.openKv();
+
   const body = await c.req.formData();
   const title = body.get("title");
   const tag = body.get("tag");
